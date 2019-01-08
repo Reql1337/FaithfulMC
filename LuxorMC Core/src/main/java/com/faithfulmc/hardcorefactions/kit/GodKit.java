@@ -56,7 +56,7 @@ public class GodKit {
             boolean hasPermission = player.hasPermission(kit.getPermissionNode());
             String kitDescription = kit.getDescription();
             long cooldown = factionUser.getRemainingKitCooldown(kit);
-            String status = hasPermission ? cooldown < 0 ? ChatColor.GREEN + "Click to use this kit" : ChatColor.WHITE + DurationFormatUtils.formatDurationWords(cooldown, true, true) : ChatColor.RED + "You do not have access to this god kit";
+            String status = hasPermission ? cooldown < 0 ? ChatColor.GREEN + "Click to activate this kit" : ChatColor.WHITE + DurationFormatUtils.formatDurationWords(cooldown, true, true) : ChatColor.RED + "You do not have access to this kit";
             ItemBuilder itemBuilder = new ItemBuilder(type).data(data).displayName(display);
             itemBuilder.lore(loreLines.stream().map(line -> line
                     .replace("%description%", kitDescription == null ? "" : kitDescription)
