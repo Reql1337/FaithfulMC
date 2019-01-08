@@ -70,27 +70,27 @@ public class TimerSidebarProvider implements SidebarProvider {
             lines.add(new SidebarEntry(ChatColor.DARK_RED.toString() + ChatColor.BOLD, "Balance", ChatColor.GRAY + ": $" + factionUser.getBalance()));
         }
         if (plugin.getStaffModeListener().isStaff(player)) {
-            lines.add(new SidebarEntry(ConfigurationService.GOLD + ChatColor.BOLD.toString(), "Staff Mode", ChatColor.GRAY + ChatColor.BOLD.toString() + ":"));
+            lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + ChatColor.BOLD.toString(), "Staff Mode", ChatColor.GRAY + ChatColor.BOLD.toString() + ":"));
             if (baseUser != null) {
-                lines.add(new SidebarEntry(ConfigurationService.GOLD + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.YELLOW, "Vanish", ChatColor.GRAY + ": " + getColour(baseUser.isVanished()) + (baseUser.isVanished() ? "Enabled" : "Disabled")));
+                lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.AQUA, "Vanish", ChatColor.GRAY + ": " + getColour(baseUser.isVanished()) + (baseUser.isVanished() ? "✓" : "✗")));
             }
-            lines.add(new SidebarEntry(ConfigurationService.GOLD + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.YELLOW, "Gamemode", ChatColor.GRAY + ": " + getColour(player.getGameMode() == GameMode.CREATIVE) + (player.getGameMode() == GameMode.CREATIVE ? "Creative" : "Survival")));
+            lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.AQUA, "Gamemode", ChatColor.GRAY + ": " + getColour(player.getGameMode() == GameMode.CREATIVE) + (player.getGameMode() == GameMode.CREATIVE ? "Creative" : "Survival")));
             if (baseUser != null) {
-                lines.add(new SidebarEntry(ConfigurationService.GOLD + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.YELLOW, "Staff Chat", ChatColor.GRAY + ": " + getColour(baseUser.isInStaffChat()) + (baseUser.isInStaffChat() ? "Enabled" : "Disabled")));
+                lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + "  " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.AQUA, "Chat", ChatColor.GRAY + ": " + getColour(baseUser.isInStaffChat()) + (baseUser.isInStaffChat() ? "✓" : "✗")));
             }
         }
         if (pvpClass != null) {
             if (pvpClass instanceof MinerClass && !ConfigurationService.KIT_MAP) {
                 lines.add(new SidebarEntry(ChatColor.BOLD + pvpClass.getDisplayName() + ConfigurationService.GRAY + ": "));
-                lines.add(new SidebarEntry(ConfigurationService.ARROW_COLOR + " " + ConfigurationService.DOUBLEARROW + " ", ChatColor.AQUA + "Diamonds", ConfigurationService.GRAY + ": " + ConfigurationService.RED + factionUser.getDiamondsMined()));
+                lines.add(new SidebarEntry(ConfigurationService.ARROW_COLOR + " " + ConfigurationService.DOUBLEARROW + " ", ChatColor.AQUA + "Diamonds Found", ConfigurationService.GRAY + ": " + ConfigurationService.RED + factionUser.getDiamondsMined()));
             }
             if ((pvpClass instanceof BardClass)) {
                 BardClass bardClass = (BardClass) pvpClass;
                 lines.add(new SidebarEntry(ChatColor.BOLD + bardClass.getDisplayName() + ConfigurationService.GRAY + ": "));
-                lines.add(new SidebarEntry(ConfigurationService.GOLD + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.YELLOW + "Energy", ConfigurationService.GRAY + ": " + ConfigurationService.RED + handleBardFormat(bardClass.getEnergyMillis(player, now), true, false)));
+                lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.AQUA + "Energy", ConfigurationService.GRAY + ": " + ConfigurationService.RED + handleBardFormat(bardClass.getEnergyMillis(player, now), true, false)));
                 long cooldown = bardClass.getRemainingBuffDelay(player, now);
                 if (cooldown > 0L) {
-                    lines.add(new SidebarEntry(ConfigurationService.GOLD + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.YELLOW + "Buff Delay", ConfigurationService.GRAY + ": " + ConfigurationService.RED + HCF.getRemaining(cooldown, false)));
+                    lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.AQUA + "Buff Delay", ConfigurationService.GRAY + ": " + ConfigurationService.RED + HCF.getRemaining(cooldown, false)));
                 }
             }
             if (pvpClass instanceof ArcherClass || pvpClass instanceof RogueClass) {
@@ -98,7 +98,7 @@ public class TimerSidebarProvider implements SidebarProvider {
                 boolean display = false;
                 if(pvpClass.hasCooldown(player)){
                     int cooldown = Cooldowns.getCooldownForPlayerInt(pvpClass.getCooldown(), player, now);
-                    lines.add(new SidebarEntry(ConfigurationService.ARROW_COLOR + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.YELLOW + "Buff Delay", ConfigurationService.GRAY + ": " + ConfigurationService.RED + cooldown));
+                    lines.add(new SidebarEntry(ConfigurationService.ARROW_COLOR + " " + ConfigurationService.DOUBLEARROW + " ", ConfigurationService.AQUA + "Buff Delay", ConfigurationService.GRAY + ": " + ConfigurationService.RED + cooldown));
                     display = true;
                 }
                 if(pvpClass instanceof ArcherClass) {
@@ -110,7 +110,7 @@ public class TimerSidebarProvider implements SidebarProvider {
                                 if (name.length() > 14) {
                                     name = name.substring(0, 14);
                                 }
-                                lines.add(new SidebarEntry(ConfigurationService.GOLD.toString() + " " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.YELLOW.toString(), ConfigurationService.YELLOW + name, ""));
+                                lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA.toString() + " " + ConfigurationService.DOUBLEARROW + " " + ConfigurationService.AQUA.toString(), ConfigurationService.AQUA + name, ""));
                             }
                         }
                         display = true;
@@ -167,7 +167,7 @@ public class TimerSidebarProvider implements SidebarProvider {
             if (!lines.isEmpty()) {
                 lines.add(new SidebarEntry(ConfigurationService.SCOREBOARD_COLOR, ConfigurationService.GRAY + TimerSidebarProvider.STRAIGHT_LINE, TimerSidebarProvider.STRAIGHT_LINE));
             }
-            lines.add(new SidebarEntry(ConfigurationService.GOLD + ChatColor.BOLD.toString(), "Conquest", ConfigurationService.GRAY + ":"));
+            lines.add(new SidebarEntry(ConfigurationService.DARK_AQUA + ChatColor.BOLD.toString(), "Conquest", ConfigurationService.GRAY + ":"));
             ConquestFaction conquestFaction = (ConquestFaction) eventFaction;
             ConquestTracker conquestTracker = (ConquestTracker) conquestFaction.getEventType().getEventTracker();
             List<Map.Entry<PlayerFaction, Integer>> entries = new ArrayList<>(conquestTracker.getFactionPointsMap().entrySet());
@@ -177,7 +177,7 @@ public class TimerSidebarProvider implements SidebarProvider {
             }
             int i = 0;
             for (Map.Entry<PlayerFaction, Integer> entry : entries) {
-                lines.add(new SidebarEntry(" " + ConfigurationService.GOLD + ChatColor.BOLD.toString() + (i + 1) + ". ", entry.getKey().getDisplayName(player), ConfigurationService.GRAY + ": " + entry.getValue()));
+                lines.add(new SidebarEntry(" " + ConfigurationService.DARK_AQUA + ChatColor.BOLD.toString() + (i + 1) + ". ", entry.getKey().getDisplayName(player), ConfigurationService.GRAY + ": " + entry.getValue()));
                 i++;
             }
             if (!entries.isEmpty()) {
