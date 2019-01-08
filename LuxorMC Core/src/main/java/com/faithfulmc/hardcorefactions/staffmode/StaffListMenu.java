@@ -132,7 +132,7 @@ public class StaffListMenu implements Runnable, Listener {
                                     closeInventory(player);
                                 }
                             } else {
-                                player.sendMessage(ConfigurationService.RED + "Player is no longer online");
+                                player.sendMessage(ConfigurationService.RED + "This player is no longer online.");
                             }
                         }
                     }
@@ -159,7 +159,7 @@ public class StaffListMenu implements Runnable, Listener {
 
     public void open(Player player) {
         if (inventoryList.isEmpty()) {
-            player.sendMessage(ConfigurationService.RED + "No staff online");
+            player.sendMessage(ConfigurationService.RED + "There are currently no staff online");
         } else {
             player.openInventory(inventoryList.iterator().next());
         }
