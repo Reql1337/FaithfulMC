@@ -1,8 +1,8 @@
-name: Hcf
-prefix: 'LuxorMC Hardcore Factions'
-version: 2.0-LMC
-description: LuxorMC Hardcore Factions
-author: LuxorMC Development Team
+name: HCF Core
+prefix: 'AetherMC Hardcore Factions'
+version: 6.9-AMC
+description: AetherMC Hardcore Factions
+author: AetherMC Development Team
 main: com.faithfulmc.hardcorefactions.HCF
 softdepend: [ProtocolLib, SimpleCheat, Vault, TabListAPI]
 commands:
