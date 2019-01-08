@@ -1,38 +1,38 @@
-inventoryTitle: '&b&lGod Kits'
+inventoryTitle: '&b»&3»&b» &b&lGKits &b«&3«&b«'
 inventorySize: 45
 loreLines:
 - ''
-- '&8&l* &b&lStatus &7%status%'
-- '&8&l* &b&lPurchase &7this god kit at &fstore.luxormc.com'
+- '&b» &3&lStatus &7%status%'
+- '&b» &7To unlock this gkit at &&7store.aethermc.com'
 - ''
 kits:
   GodDiamond:
-    display: '&b&lGod Diamond Kit'
+    display: '&b&l*&3&l*&b&l* &bDiamond &3Kit &b&l*&3&l*&b&l*'
     slot: 12
-    type: DIAMOND_CHESTPLATE
+    type: DIAMOND_HELMET
     data: 0
   GodBard:
-    display: '&6&lGod Bard Kit'
+    display: '&b&l*&3&l*&b&l* &b&lBard &3&lKit &b&l*&3&l*&b&l*'
     slot: 16
-    type: GOLD_CHESTPLATE
+    type: GOLD_HELMET
     data: 0
   GodArcher:
-    display: '&d&lGod Archer Kit'
+    display: '&b&l*&3&l*&b&l* &b&lArcher &3&lKit &b&l*&3&l*&b&l*'
     slot: 10
-    type: LEATHER_CHESTPLATE
+    type: LEATHER_HELMET
     data: 0
   GodRogue:
-    display: '&7&lGod Rogue Kit'
+    display: '&b&l*&3&l*&b&l* &b&lRogue &3&lKit &b&l*&3&l*&b&l*'
     slot: 14
-    type: CHAINMAIL_CHESTPLATE
+    type: CHAINMAIL_HELMET
     data: 0
   GodMiner:
-    display: '&f&lGod Miner Kit'
+    display: '&b&l*&3&l*&b&l* &b&lMiner &3&lKit &b&l*&3&l*&b&l*'
     slot: 29
     type: DIAMOND_PICKAXE
     data: 0
   GodTrapper:
-    display: '&c&lGod Trapping Kit'
+    display: '&b&l*&3&l*&b&l* &b&lTrapping &3&lKit &b&l*&3&l*&b&l*'
     slot: 33
     type: DIAMOND_SPADE
     data: 0
