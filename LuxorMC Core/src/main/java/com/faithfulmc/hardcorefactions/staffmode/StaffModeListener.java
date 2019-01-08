@@ -35,21 +35,21 @@ import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
 public class StaffModeListener implements Listener {
-    private static final ItemStack RANDOM_TP = new ItemBuilder(Material.WATCH).displayName(ConfigurationService.GOLD + "Random TP").lore(ConfigurationService.GRAY + "Right click to random tp").build();
-    private static final ItemStack EXAMIN = new ItemBuilder(Material.BOOK).displayName(ConfigurationService.GOLD + "Examine Player").lore(ConfigurationService.GRAY + "Right click to examine a player").build();
-    private static final ItemStack MINER_TP = new ItemBuilder(Material.BEACON).displayName(ConfigurationService.GOLD + "Miner TP").lore(ConfigurationService.GRAY + "Right click to tp to a miner").build();
+    private static final ItemStack RANDOM_TP = new ItemBuilder(Material.WATCH).displayName(ConfigurationService.DARK_AQUA + "Random Player Teleport").lore(ConfigurationService.GRAY + "Right click to randomly teleport to a online player.").build();
+    private static final ItemStack EXAMIN = new ItemBuilder(Material.BOOK).displayName(ConfigurationService.DARK_AQUA + "Inventory Viewer").lore(ConfigurationService.GRAY + "Right click to view an interview of a player.").build();
+    private static final ItemStack MINER_TP = new ItemBuilder(Material.BEACON).displayName(ConfigurationService.DARK_AQUA + "Random Miner Teleport").lore(ConfigurationService.GRAY + "Right click to teleport to a random miner online.").build();
     private static final ItemStack BLANK = new ItemBuilder(Material.STAINED_GLASS_PANE).displayName(" ").data(DyeColor.GRAY.getData()).build();
-    private static final ItemStack ALTS = new ItemBuilder(Material.PAPER).displayName(ChatColor.GREEN + "Alts").build();
-    private static final ItemStack TP = new ItemBuilder(Material.WATCH).displayName(ChatColor.BLUE + "Teleport").build();
-    private static final ItemStack FREEZE = new ItemBuilder(Material.PACKED_ICE).displayName(ConfigurationService.GOLD + "Freeze Player").lore(ConfigurationService.GRAY + "Right click to freeze a player").build();
-    private static final ItemStack LIST = new ItemBuilder(Material.NETHER_STAR).displayName(ConfigurationService.GOLD + "Online Staff").lore(ConfigurationService.GRAY + "Right click to view online staff").build();
-    private static final ItemStack THRU = new ItemBuilder(Material.COMPASS).displayName(ConfigurationService.GOLD + "Phase Compass").lore(ConfigurationService.GRAY + "Right click to go through blocks").build();
+    private static final ItemStack THRU = new ItemBuilder(Material.COMPASS).displayName(ConfigurationService.DARK_AQUA + "Phase Compass").lore(ConfigurationService.GRAY + "Right click to go phase through blocks.").build(); 
+    private static final ItemStack ALTS = new ItemBuilder(Material.PAPER).displayName(ChatColor.DARK_AQUA + "Alt Accounts").build();
+    private static final ItemStack TP = new ItemBuilder(Material.WATCH).displayName(ChatColor.DARK_AQUA + "Teleport").build();
+    private static final ItemStack FREEZE = new ItemBuilder(Material.PACKED_ICE).displayName(ConfigurationService.DARK_AQUA + "Freeze Player").lore(ConfigurationService.GRAY + "Right click to freeze a suspected player").build();
+    private static final ItemStack LIST = new ItemBuilder(Material.PLAYER_HEAD).displayName(ConfigurationService.DARK_AQUA + "Online Staff List").lore(ConfigurationService.GRAY + "Right click to see online staff members.").build();
     private final HCF hcf;
     private final BasePlugin basePlugin;
     private Set<Player> staffMode = new HashSet<>();
     private Map<Player, PlayerCache> playerCacheMap = new HashMap<>();
     private Map<Player, Player> examinMap = new HashMap<>();
-    private String name = ConfigurationService.GOLD + "Staff Mode";
+    private String name = ConfigurationService.DARK_AQUA + "Staff Mode";
     private StaffListMenu staffModePlayers;
 
     public StaffModeListener(HCF hcf) {
@@ -87,7 +87,7 @@ public class StaffModeListener implements Listener {
         if (targetName.length() > 12) {
             targetName = targetName.substring(0, 12);
         }
-        Inventory inventory = Bukkit.createInventory(null, 6 * 9, ConfigurationService.GOLD + "Examine " + ConfigurationService.YELLOW + targetName);
+        Inventory inventory = Bukkit.createInventory(null, 6 * 9, ConfigurationService.GOLD + "Inventory View " + ConfigurationService.YELLOW + targetName);
         ItemStack[] content = inventory.getContents();
         System.arraycopy(target.getInventory().getArmorContents(), 0, content, 2, target.getInventory().getArmorContents().length);
         System.arraycopy(target.getInventory().getContents(), 0, content, 9, target.getInventory().getContents().length);
@@ -146,7 +146,7 @@ public class StaffModeListener implements Listener {
                 event.setCancelled(true);
                 if (event.getClickedInventory() == event.getView().getTopInventory()) {
                     Inventory clicked = event.getClickedInventory();
-                    if (clicked != null && clicked.getName().startsWith(ConfigurationService.GOLD + "Examine " + ConfigurationService.YELLOW)) {
+                    if (clicked != null && clicked.getName().startsWith(ConfigurationService.DARK_AQUA + "Inventory View" + ConfigurationService.YELLOW)) {
                         Player examining = examinMap.get(player);
                         int slot = event.getSlot();
                         if (slot == (5 * 9) + 1) {
@@ -194,7 +194,7 @@ public class StaffModeListener implements Listener {
                         List<Player> onlinePlayers = Bukkit.getOnlinePlayers().stream().filter(other -> !staffMode.contains(other)).collect(Collectors.toList());
                         Player tp;
                         if (onlinePlayers.isEmpty()) {
-                            player.sendMessage(ConfigurationService.RED + "No players online");
+                            player.sendMessage(ConfigurationService.RED + "There are no players online");
                             return;
                         } else if (onlinePlayers.size() == 1) {
                             tp = onlinePlayers.iterator().next();
@@ -208,7 +208,7 @@ public class StaffModeListener implements Listener {
                         List<Player> worldPlayers = player.getWorld().getPlayers().stream().filter(other -> !staffMode.contains(other) && other.getLocation().getY() < 45.0).collect(Collectors.toList());
                         Player tp;
                         if (worldPlayers.isEmpty()) {
-                            player.sendMessage(ConfigurationService.RED + "No miners online");
+                            player.sendMessage(ConfigurationService.RED + "There are no players mining online");
                             return;
                         } else if (worldPlayers.size() == 1) {
                             tp = worldPlayers.iterator().next();
