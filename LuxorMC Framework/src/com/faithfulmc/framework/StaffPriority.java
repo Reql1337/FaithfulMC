@@ -4,7 +4,7 @@ import com.google.common.collect.ImmutableMap;
 import org.bukkit.entity.Player;
 
 public enum StaffPriority {
-    OWNER(6), HEADADMIN(5), STAFFMANAGER(4), ADMIN(3), MODERATOR(2), TRIAL(1), NONE(0);
+    OWNER(6), STAFFMANAGER(5), SENIORADMIN(4), ADMIN(3), MODERATOR(2), HELPER(1), MEMBER(0);
 
     private static final ImmutableMap<Integer, StaffPriority> BY_ID;
 
